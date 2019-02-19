@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg4084"
+   viewBox="0 0 322.71994 49.249989">
+  <defs
+     id="defs4086" />
+  <metadata
+     id="metadata4089">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-66.806125,-342.8165)"
+     id="layer1">
+    <g
+       style="opacity:0.56000001;isolation:isolate"
+       id="g665"
+       class="cls-34"
+       transform="translate(-1521.4739,153.72649)">
+      <polyline
+         style="fill:none;stroke:#3399ff;stroke-width:3px;stroke-miterlimit:10"
+         id="polyline667"
+         points="1911 207.5 1680.26 207.5 1668.63 197.96 1604.52 197.96"
+         class="cls-35" />
+      <circle
+         style="fill:none;stroke:#3399ff;stroke-width:3px;stroke-miterlimit:10"
+         id="circle669"
+         r="7.3699999"
+         cy="197.96001"
+         cx="1597.15"
+         class="cls-35" />
+    </g>
+    <g
+       style="opacity:0.56000001;isolation:isolate"
+       id="g671"
+       class="cls-34"
+       transform="translate(-1521.4739,153.72649)">
+      <polyline
+         style="fill:none;stroke:#3399ff;stroke-width:3px;stroke-miterlimit:10"
+         id="polyline673"
+         points="1911 218.7 1811.29 218.7 1793.04 230.19 1719.82 230.19"
+         class="cls-35" />
+      <circle
+         style="fill:none;stroke:#3399ff;stroke-width:3px;stroke-miterlimit:10"
+         id="circle675"
+         r="7.3699999"
+         cy="229.47"
+         cx="1712.45"
+         class="cls-35" />
+    </g>
+  </g>
+</svg>

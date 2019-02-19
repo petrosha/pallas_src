@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg4084"
+   viewBox="0 0 27.25 60.19">
+  <defs
+     id="defs4086" />
+  <metadata
+     id="metadata4089">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-249.23214,-299.41006)"
+     id="layer1">
+    <polygon
+       id="polygon585"
+       points="382.14,30.79 382.14,30.79 388.64,36.26 388.64,36.26 409.39,36.26 409.39,30.79 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+    <polygon
+       id="polygon587"
+       points="382.14,41.73 382.14,41.73 388.64,47.2 388.64,47.2 409.39,47.2 409.39,41.73 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+    <polygon
+       id="polygon589"
+       points="382.14,52.67 382.14,52.67 388.64,58.15 388.64,58.15 409.39,58.15 409.39,52.67 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+    <polygon
+       id="polygon591"
+       points="382.14,63.62 382.14,63.62 388.64,69.09 388.64,69.09 409.39,69.09 409.39,63.62 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+    <polygon
+       id="polygon593"
+       points="382.14,74.56 382.14,74.56 388.64,80.04 388.64,80.04 409.39,80.04 409.39,74.56 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+    <polygon
+       id="polygon595"
+       points="382.14,85.51 382.14,85.51 388.64,90.98 388.64,90.98 409.39,90.98 409.39,85.51 "
+       class="cls-5"
+       transform="matrix(-1,0,0,1,658.62214,268.62006)" />
+  </g>
+</svg>

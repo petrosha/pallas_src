@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg4084"
+   viewBox="0 0 39.94 335.56996">
+  <defs
+     id="defs4086" />
+  <metadata
+     id="metadata4089">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+    <style>
+  #polygon67{fill:rgba(51, 153, 255, 0.11);stroke:rgba(51, 153, 255, 0.75);}
+  #polygon69{fill:rgba(51, 153, 255, 1);}
+  #polygon71{fill:rgba(51, 153, 255, 1);}
+  #polygon73{fill:rgba(51, 153, 255, 1);}
+    </style>
+  <g
+     transform="translate(-230.50535,-186.864)"
+     id="layer1">
+    <polygon
+      id="polygon67"
+       points="16.22,605.45 16.22,269.88 16.22,269.88 56.16,309.82 56.16,565.52 16.22,605.45 16.22,605.45 "
+       class="cls-16"
+       transform="translate(214.28535,-83.016017)"  stroke-width="2px" />
+    <polygon
+       transform="matrix(-1.0000001,0,0,1.0000001,286.66536,-83.016017)"
+       id="polygon69"
+       points="43.69,364.8 43.69,380.8 28.69,348.8 43.69,316.8 43.69,332.8 43.69,332.8 36.19,348.8 "
+       class="cls-5" />
+    <polygon
+       transform="matrix(-1.0000001,0,0,1.0000001,286.66536,-83.016017)"
+       id="polygon71"
+       points="43.69,455.11 43.69,471.11 28.69,439.11 43.69,407.11 43.69,423.11 43.69,423.11 36.19,439.11 "
+       class="cls-5" />
+    <polygon
+       transform="matrix(-1.0000001,0,0,1.0000001,286.66536,-83.016017)"
+       id="polygon73"
+       points="43.69,545.42 43.69,561.42 28.69,529.42 43.69,497.42 43.69,513.42 43.69,513.42 36.19,529.42 "
+       class="cls-5" />
+  </g>
+</svg>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg4084"
+   viewBox="0 0 21.249999 27.37">
+  <defs
+     id="defs4086" />
+  <metadata
+     id="metadata4089">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-186.75617,-436.02595)"
+     id="layer1">
+    <g
+       id="g561"
+       class="cls-34"
+       transform="translate(-1850.7612,266.98876)">
+      <circle
+         id="circle563"
+         transform="matrix(0.82845153,-0.56006076,0.56006076,0.82845153,268.79,926.21)"
+         r="7.3699999"
+         cy="49.540001"
+         cx="1635.48"
+         class="cls-35" />
+      <polyline
+         id="polyline565"
+         points="1911.35 50.84 1840.85 50.84 1825.33 41.79 1716.59 41.79 1701.86 51.34 1657.76 51.34"
+         class="cls-35" />
+    </g>
+    <g
+       id="g567"
+       class="cls-34"
+       transform="translate(-1850.7612,266.98876)">
+      <circle
+         id="circle569"
+         r="7.3699999"
+         cy="60.040001"
+         cx="1747.86"
+         class="cls-35" />
+      <polyline
+         id="polyline571"
+         points="1910.6 69.08 1839.1 69.08 1823.58 60.04 1754.84 60.04"
+         class="cls-35" />
+    </g>
+    <polygon
+       style="isolation:isolate;fill:#3399ff"
+       id="polygon95-3"
+       points="480.25,620.38 473.75,625.86 473.75,625.86 459,625.86 459,620.38 480.25,620.38 "
+       class="cls-5"
+       transform="translate(-272.24383,-184.35405)" />
+    <polygon
+       style="isolation:isolate;fill:#3399ff"
+       id="polygon97-6"
+       points="480.25,631.33 473.75,636.8 473.75,636.8 459,636.8 459,631.33 480.25,631.33 "
+       class="cls-5"
+       transform="translate(-272.24383,-184.35405)" />
+    <polygon
+       style="isolation:isolate;fill:#3399ff"
+       id="polygon99-0"
+       points="480.25,642.27 473.75,647.75 473.75,647.75 459,647.75 459,642.27 480.25,642.27 "
+       class="cls-5"
+       transform="translate(-272.24383,-184.35405)" />
+  </g>
+</svg>
