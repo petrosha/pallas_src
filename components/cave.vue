@@ -1,5 +1,5 @@
 <template>
-   <div class="cave_main">
+   <div class="cave_main"  @click.stop="">
      <div class="cave_box">
        <div>
          <div class="row" v-for="lrow in cave">
@@ -8,33 +8,52 @@
            </div>
          </div>
        </div>
-        {{length}}
-        <button @click="caveCreate">ЖМИ</button>
-        <button @click="caveStringify">ЖМИ2</button>
+        <button @click="$emit('done')">Done</button>
+
      </div>
    </div>
 </template>
 <script>
 
-import lcave from 'raw-loader!../store/cave.txt';
-import _ from 'lodash';
-
   export default {
+    props:['cave'],
     data () {
       return {
-        length:0,
-        cave:[]
+        length:0
       }
     },
     methods:{
       caveCreate(){
+        let lsprow=[];
+        for(let l=0;l<70;l++)
+        {
+          lsprow.push(["sp"]);
+        }
+        let lspside=[];
+        for(let l=0;l<10;l++)
+        {
+          lspside.push(["sp"]);
+        }
+
+        for(let l=0;l<10;l++)
+        {
+          this.cave.push(lsprow);
+        }
+
         let ltmp=lcave.split("|");
         let ltmp2=[];
         ltmp.forEach((item)=>{ltmp2.push(item.split(" "))});
+
         for(let l=0;l<50;l++)
         {
-          this.cave.push(ltmp2.slice(l*50,l*50+50));
+          this.cave.push([].concat(lspside,ltmp2.slice(l*50,l*50+50),lspside));
         }
+        for(let l=0;l<10;l++)
+        {
+          this.cave.push(lsprow);
+        }
+
+
         this.length=this.cave.length;
         return false;
       },
@@ -73,8 +92,8 @@ import _ from 'lodash';
   }
   .cave_box
   {
-    width:700px;
-    height:700px;
+    width:800px;
+    height:800px;
     border: 2px rgba(51,153,255,0.75) solid;
     background: rgba(51,153,255,0.11);
   	overflow: auto;
@@ -92,6 +111,23 @@ import _ from 'lodash';
     background: grey;
     border:1px grey solid;
   }
+  .sp{
+    width:10px;
+    height:10px;
+    margin: 0px;
+    background: black;
+    border:1px black solid;
+  }
+
+  .st{
+    width:10px;
+    height:10px;
+    margin: 0px;
+    background: magenta;
+    border:1px black solid;
+  }
+
+
   .r{border-right:1px black solid;}
   .l{border-left:1px black solid;}
   .t{border-top:1px black solid;}

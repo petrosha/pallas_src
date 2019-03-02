@@ -25,6 +25,7 @@
 <script>
   import {mapGetters} from 'vuex';
   import { mapMutations } from 'vuex';
+  import { mapActions } from 'vuex';
   import {convSet} from './stringlib.js';
   import left6x from '../assets/6x_left.svg';
     import right6x from '../assets/6x_right.svg';
@@ -40,8 +41,9 @@
     data () { return {}},
     methods:{
       ...mapMutations(['actorsActiveSet']),
+            ...mapActions(['sendSetActor']),
       actorSet(l_item){
-        this.actorsActiveSet(l_item.id)
+        this.sendSetActor(l_item.id);
       },
     },
     computed:{

@@ -1,0 +1,14 @@
+[{"x":11, "y":11,"type":"driller","work":true,"broken":true,"firm":"TM","empty":false},
+{"x":11, "y":12,"type":"box","work":false,"broken":false,"firm":"TM","empty":false},
+{"x":11, "y":13,"type":"brill","work":false,"broken":false,"firm":"DB","empty":false},
+{"x":11, "y":14,"type":"buksir","work":false,"broken":false,"firm":"DB","empty":false},
+{"x":11, "y":15,"type":"digger","work":false,"broken":false,"firm":"SH","empty":false},
+{"x":11, "y":16,"type":"dron","work":false,"broken":false,"firm":"SH","empty":false},
+{"x":11, "y":17,"type":"iron","work":false,"broken":false,"firm":"TO","empty":false},
+{"x":11, "y":19,"type":"loader","work":false,"broken":false,"firm":"TO","empty":false},
+{"x":11, "y":20,"type":"stealer","work":false,"broken":false,"firm":"AC","empty":false},
+{"x":11, "y":21,"type":"stone","work":false,"broken":false,"firm":"AC","empty":false},
+{"x":11, "y":22,"type":"ship","work":false,"broken":false,"firm":"AC","empty":false},
+{"x":11, "y":23,"type":"barge","work":false,"broken":false,"firm":"AC","empty":false},
+{"x":11, "y":24,"type":"train","work":false,"broken":false,"firm":"AC","empty":false}
+]

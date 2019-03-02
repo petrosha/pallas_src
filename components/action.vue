@@ -1,5 +1,5 @@
 <template>
-   <div class="act_main ">
+   <div class="act_main " @click.stop="">
      <b-container fluid >
        <b-row>
          <b-col sd="1" md="2" lg="2" class="act_bcol"></b-col>
@@ -25,10 +25,8 @@
               </div>
               <!-- {{actActActive}} -->
             <div class="btnAlign">
-              <b-button-group style="width:300px;">
-                  <b-button :disabled="actValid" variant="primary" v-on:click="actOkBtn" style="width:150px;">ОК</b-button>
-                <b-button variant="danger" v-on:click="actCancel" style="width:150px;">Отмена</b-button>
-              </b-button-group>
+                <button :disabled="actValid" class="btn btn-primary" v-on:click.stop="actOkBtn" style="width:150px;">ОК</button>
+                <button class="btn btn-danger" v-on:click.stop="actCancel" style="width:150px;">Отмена</button>
             </div>
            </div>
          </b-col>
@@ -115,7 +113,6 @@ import {router} from '../routes.js'
         if(this.objInfo.actid in this.actOneObject.actions)
           return this.actOneObject.actions[this.objInfo.actid];
         else {
-          console.log("Action: Wrong Action: "+this.objInfo.actid);
           this.$emit("done");
           return false;
         }

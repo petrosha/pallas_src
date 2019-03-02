@@ -1,5 +1,5 @@
 <template>
-   <div class="wrn_main">
+   <div class="wrn_main" @click.stop="">
      <div class="wrn_box">
         <div class="wrnAlign">
           <h1 class="wrn_warning">ВНИМАНИЕ!</h1>

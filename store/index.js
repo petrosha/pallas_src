@@ -7,7 +7,8 @@ import {convStrip,convSet} from '../components/stringlib.js';
 import {
   json1,
   json2,
-  json3
+  json3,
+  json4
 } from './jsons.js';
 
 Vue.use(Vuex);
@@ -19,7 +20,9 @@ export const store = new Vuex.Store({
     data: {},
 
     actors: {
+      first: true,
       active: "",
+      ntf:"",
       list: []
     },
 		warning:{
@@ -72,6 +75,13 @@ export const store = new Vuex.Store({
       }
       else return false;
 		},
+    ntfObject(state) {
+      if(state.actors.ntf in state.data)
+      {
+        return {key:Math.random(), obj:state.data[state.actors.ntf], addr: state.actors.ntf};
+      }
+      else return false;
+    },
 		routerPath(state){
 			return state.route;
 		}
@@ -98,11 +108,17 @@ export const store = new Vuex.Store({
       state.socket.serverAddress = lserv;
     },
     actorsActiveSet(state, lactor) {
-      console.log("! " + lactor);
+//    console.log("! " + lactor);
+
       state.data = Object.assign({});
       state.actors.active = lactor;
+      state.actors.ntf = lactor+"_notifications";
       localStorage.actorActive = lactor;
     },
+    actorsFirstSet(state) {
+      state.actors.first = false;
+    },
+
     dataListFill(state, lstr) {
       let lobj = JSON.parse(lstr).list.objects;
       let lobj2 = {};
@@ -147,12 +163,12 @@ export const store = new Vuex.Store({
           }
         }
       }
-      if (state.actors.list.length === 1) {
+      // if (state.actors.list.length === 1) {
         store.dispatch('sendSetActor', state.actors.list[0].id);
         return true;
-      }
-      localStorage.actorActive = "";
-      state.actors.active = "";
+      // }
+      // localStorage.actorActive = "";
+      // state.actors.active = "";
     },
     //добавляем необходимые поля в объект правильным образом
     parSet(state, payload) {
@@ -232,12 +248,13 @@ export const store = new Vuex.Store({
       let cur_path=state.route.path.substring(1,state.route.path.length);
       let from_path=state.route.from.path.substring(1,state.route.from.path.length);
 
-			if(cur_path!==message.data.object.id && message.data.object.id != "menu" && message.data.object.id != "notifications")
+			if(cur_path!==message.data.object.id && message.data.object.id != "menu" && message.data.object.id != state.actors.ntf)
 				router.replace("/"+message.data.object.id);
 
 			if(from_path!=="")
 			{
-				if(from_path !== state.actors.active && from_path !="menu" && from_path !="notifications" ){
+//				if(from_path !== state.actors.active && from_path !="menu" && from_path !="notifications" ){
+				if(from_path !="menu" && from_path !=state.actors.ntf ){
 					if(from_path in state.data)
 					{
             store.dispatch('sendUnSubscr', from_path);
@@ -245,11 +262,6 @@ export const store = new Vuex.Store({
 					}
 				}
 			}
-			if (message.data.object.id === state.actors.active) {
-				store.dispatch('sendSubscr', "menu");
-        store.dispatch('sendSubscr', "notifications");
-			}
-
 		},
 		replyAction(state, message){
 
@@ -260,14 +272,15 @@ export const store = new Vuex.Store({
 			if(message.data.action==="open_object")
 			{
         let cur_path=state.route.path.substring(1,state.route.path.length);
-        if(state.data[cur_path].object)
-          if(state.data[cur_path].object.attributes)
-            if(state.data[cur_path].object.attributes.temporary_object)
-            {
-              console.log("REPLACE!");
-              router.replace("/"+message.data.action_data.object_id);
-              return false;
-            }
+        if(state.data[cur_path])
+          if(state.data[cur_path].object)
+            if(state.data[cur_path].object.attributes)
+              if(state.data[cur_path].object.attributes.temporary_object)
+              {
+                console.log("REPLACE!");
+                router.replace("/"+message.data.action_data.object_id);
+                return false;
+              }
         router.push("/"+message.data.action_data.object_id);
 			}
 			if(message.data.action==="show_message")
@@ -287,7 +300,9 @@ export const store = new Vuex.Store({
         let from_path=state.route.from.path.substring(1,state.route.from.path.length);
         if(from_path!=="")
         {
-          if(from_path !== state.actors.active && from_path !="menu" && from_path !="notifications" ){
+//          if(from_path !== state.actors.active && from_path !="menu" && from_path !="notifications" ){
+          if(from_path !="menu" && from_path !=state.actors.ntf ){
+
             if(from_path in state.data)
             {
               store.dispatch('sendUnSubscr', from_path);
@@ -319,6 +334,7 @@ export const store = new Vuex.Store({
 				{
 					if(message.data.object===null)
 					{
+            store.commit('dataDel',message.data.object_id);
 						router.replace("/not_found");
 						return true;
 					}
@@ -387,6 +403,8 @@ export const store = new Vuex.Store({
       console.log("Message:\n" + JSON.stringify(message1));
 			let message=JSON.parse(convStrip(JSON.stringify(message1)));
 
+      if (message.type === "disconnected") window.location='http://google.com';
+
       if ("request_id" in message) {
         if (message.request_id === state.socket.wait.req) {
           if (message.type === "error") {
@@ -402,7 +420,16 @@ export const store = new Vuex.Store({
 					if (state.socket.wait.type === "set_actor") {
             store.commit('actorsActiveSet', JSON.parse(state.socket.wait.message).data.actor_id);
             store.commit('gotOk');
-            store.dispatch('sendSubscrWait', state.actors.active);
+
+            store.dispatch('sendSubscr', "menu");
+            store.dispatch('sendSubscr', state.actors.ntf);
+
+            if(state.actors.first){
+              let cur_path=state.route.path.substring(1,state.route.path.length);
+              if(cur_path === "") store.dispatch('sendSubscrWait', state.actors.active);
+                else if(cur_path != 'menu' && cur_path != state.actors.ntf ) store.dispatch('sendSubscrWait', cur_path);
+              store.commit('actorsFirstSet');
+            } else  store.dispatch('sendSubscrWait', state.actors.active);
             return true;
           }
 
@@ -443,9 +470,7 @@ export const store = new Vuex.Store({
               store.commit('replyObject',message);
   						return true;
             }
-
 					}
-
 				}
 			}
 			if (message.type === "actors") {
@@ -664,4 +689,5 @@ export const store = new Vuex.Store({
 store.commit('dataFill', JSON.parse(JSON.stringify(json1())));
 store.commit('dataFill', JSON.parse(JSON.stringify(json2())));
 store.commit('dataFill', JSON.parse(JSON.stringify(json3())));
+store.commit('dataFill', JSON.parse(JSON.stringify(json4())));
 store.commit('dataListFill', JSON.stringify(json2()));

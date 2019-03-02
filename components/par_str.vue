@@ -192,11 +192,9 @@ export default {
       return lret;
     },
     parDefault() {
-      console.log("DefaultIN: "+this.par.default_value);
       if ("default_value" in this.par)
         if (this.parMulti){
           let lret=conv.makeHtml(this.par.default_value).replace(/<br><\/p>/gm, "</p>").replace(/<br>/gm, "</p><p>");
-          console.log("DefaultIN1: "+lret);
           return lret;
         }
         else return this.par.default_value;

@@ -53,7 +53,7 @@
       <div class="objAlign"><icon-dbl-hr class="obj_list_hr"/></div>
       <span v-if="objListObjectLength" class="objAlign">Список пуст...</span>
       <div class="obj_list_el" v-for="(lkey,index) in objListObject" @click="objActiveSet(lkey.id)" :style="objSmallList">
-        <in-object :objid="lkey" :decor="false" :small="small" :key="objOneObject.id+lkey.id+JSON.stringify(lkey)" />
+        <in-object :objid="lkey" :decor="false" :small="small" :key="objOneObject.id+lkey.id+Math.random()" />
         <!-- <button
           class="btn btn-outline-primary obj_btn"
           @click="objActiveSet(lkey.id)">

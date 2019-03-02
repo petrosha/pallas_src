@@ -12,8 +12,9 @@
             <main-actors/>
             <div class="main_menu_div">
               <main-menu2 :objid="menuObject.obj" :key="menuObject.key" @done="main_sw_change" :small="!decor"/>
-            </div>  <!-- <main-menu @objchange="menuAct" :list="menuObjects"/> -->
+            </div>
             <main-settings/>
+
 
           </div>
 
@@ -25,7 +26,12 @@
         v-if="main_sw_small"
         :class="object_class">
           <div class="main_screen_inner_box" :style="main_screen_inner_box_padding">
-            <main-object v-if="oneObject" :objid="oneObject" :decor="decor" :small="!decor" :key="oneObject.object.id"></main-object>
+            <div v-if="mainObjAll">
+              <main-object v-if="oneObject" :objid="oneObject" :decor="decor" :small="!decor" :key="oneObject.object.id"></main-object>
+            </div>
+            <div v-if="mainObjCave">
+              <main-cave v-if="oneObject" :objid="oneObject" :decor="decor" :small="!decor" :key="oneObject.object.id"></main-cave>
+            </div>
           </div>
         </b-col>
       </b-row>
@@ -37,8 +43,8 @@
     <!-- <div class="test">
       {{testwh}}
     </div> -->
-    <main-cave/>
 
+  <main-notifications @noteclicked="main_sw_false"/>
   <main-spinner
     v-if="socketGet.wait.show"
     :text="socketGet.wait.note"
@@ -59,13 +65,13 @@ import { mapMutations } from 'vuex';
 import { mapActions } from 'vuex';
 
 import MainObject from './components/object.vue';
-import MainMenu from './components/menu.vue';
 import Settings from './components/settings.vue';
 import mainActors from './components/actor.vue';
 import mainWarning from './components/warning2.vue';
 import mainSpin from './components/spinner.vue';
 import mainMenu from './components/menuobject.vue';
-import mainCave from './components/cave.vue';
+import mainNotifications from './components/notifications.vue';
+import MainCave from './components/caveobject.vue';
 
 import dblAngLeft from './assets/double-angle-left.svg';
 import dblAngRight from './assets/double-angle-right.svg';
@@ -74,13 +80,13 @@ export default {
   name: 'app',
   components:{
     'main-object': MainObject,
-    'main-menu': MainMenu,
     'main-settings': Settings,
     'main-actors': mainActors,
     'main-spinner':mainSpin,
     'main-menu2':mainMenu,
     'main-warning':mainWarning,
-    'main-cave':mainCave,
+    'main-notifications':mainNotifications,
+    'main-cave': MainCave,
     "s-svg1": dblAngLeft,
     "s-svg2": dblAngRight,
   },
@@ -93,17 +99,23 @@ export default {
       menu_class: "main_screen_outer_box_left",
       object_class:"main_screen_outer_box_right",
       main_screen_inner_box_padding:"padding-left:0px;",
-      decor:true
+      decor:true,
+      activeObj:"babcom_web_cave"
+//      activeObj:""
+
     }
   },
   methods:
-  { ...mapMutations(["objActiveSet","warningReset"]),
-    ...mapActions(["sendSubscrWait"]),
+  { ...mapMutations(["objActiveSet","warningReset","dataDel"]),
+    ...mapActions(["sendSubscrWait",'sendUnSubscr']),
     mainWrnDone(){
       this.warningReset();
     },
     main_sw_change(){
       this.main_sw_stat=!this.main_sw_stat;
+    },
+    main_sw_false(){
+      this.main_sw_stat=false;
     },
     mainWinWidth() {
       this.testwh = "W: "+this.main_vw;
@@ -126,7 +138,7 @@ export default {
 
       if(this.main_sw_stat===true) this.main_screen_inner_box_padding="padding-left:0px";
       else this.main_screen_inner_box_padding="padding-left:3.6vh;";
-    },
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -134,8 +146,6 @@ export default {
       window.addEventListener('resize', () => {
         this.main_vw = window.innerWidth;
       });
-
-
     })
   },
   watch: {
@@ -148,11 +158,29 @@ export default {
       deep: true
     },
     '$route' (to,from){
-      if(!this.socketGet.wait.req && this.socketGet.isConnected && this.actorsGet.active.length>0 && this.allObjects[this.actorsGet.active]!==undefined)
+      if(!this.socketGet.wait.req && this.socketGet.isConnected && this.actorsGet.active.length>0)// && this.allObjects[this.actorsGet.active]!==undefined)
       {
-        if(to.path==="/") this.$router.replace(this.actorsGet.active);
-        if(this.allObjects[to.path.substring(1,to.path.length)]===undefined)
-      		this.sendSubscrWait(to.path.substring(1,to.path.length));
+        let to_path;
+        let from_path=from.path.substring(1,from.path.length);
+
+        if(to.path==="/" || to.path==="") to_path=this.actorsGet.active;
+        else to_path=to.path.substring(1,to.path.length);
+
+        if(this.allObjects[to_path]===undefined)
+  		      this.sendSubscrWait(to_path);
+
+        this.activeObj=to_path;
+
+  			if(from_path!=="")
+  			{
+  				if(from_path !="menu" && from_path !=this.actorsGet.ntf ){
+            if(this.allObjects[from_path]!=undefined)
+  					{
+              this.sendUnSubscr(from_path);
+  						this.dataDel(from_path);
+  					}
+  				}
+  			}
       }
     }
   },
@@ -173,6 +201,18 @@ export default {
       if(this.main_sw_stat) return 5;
       else return 0;
     },
+    mainObjAll(){
+      if(this.activeObj ==="notifications" || this.activeObj === "babcom_web_cave" ) return false;
+      else return true;
+    },
+    mainObjNotifications(){
+      if(this.activeObj === "notifications") return true;
+      else return false;
+    },
+    mainObjCave(){
+      if(this.activeObj === "babcom_web_cave") return true;
+      else return false;
+    }
   }
 }
 </script>

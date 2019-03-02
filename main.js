@@ -18,6 +18,12 @@ Vue.use(BootstrapVue);
 import VueNativeSock from 'vue-native-websocket'
 Vue.use(VueNativeSock, 'ws://123', {connectManually: true});
 
+import VueNativeNotification from 'vue-native-notification'
+
+Vue.use(VueNativeNotification, {
+  requestOnNotify: true
+});
+
 import {router} from './routes.js'
 
 const unsync = sync(store, router);
@@ -29,7 +35,7 @@ new Vue({
   render: h => h(App)
 })
 
-if(store.getters.socketGet.serverAddress.length>0) store.dispatch('connectServ');
+//if(store.getters.socketGet.serverAddress.length>0) store.dispatch('connectServ');
 
   // window.onclick = function(e) {
   //       if (e.target.localName == 'a') {

@@ -1,5 +1,5 @@
 <template>
-<div class="spin_main">
+<div class="spin_main"  @click.stop="">
   <!-- <div class="spinAlignV"> -->
     <h2 v-if="!error" class="spin_note" v-html="text"></h2><br><br>
     <h2 v-if="error" class="spin_error" v-html="error"></h2><br><br>

@@ -373,6 +373,29 @@ function json3() {
   }
 };
 
+function json4() {
+  return {
+    "object": {
+     "id": "babcom_web_cave",
+     "actions": {
+       "chat_mute": {
+         "code": "chat_mute",
+         "name": "Включить уведомления",
+         "params": {
+           "chat_code": "9f6c97b9-9ad1-49b7-acab-33e09a5ae2c1",
+           "mute_on_off": "off"
+         },
+         "disabled": false
+       }
+     },
+     "attributes": {
+       "type": {
+         "value": "chat"
+       }
+     }
+   }
+  }
+};
 //	menu:{key:0, obj:{
     // "id": 0,
     // "attributes": {
@@ -485,5 +508,7 @@ function json3() {
 export {
   json1,
   json2,
-  json3
+  json3,
+  json4
+
 }
